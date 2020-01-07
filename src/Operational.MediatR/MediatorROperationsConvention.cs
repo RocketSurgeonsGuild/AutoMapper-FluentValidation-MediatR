@@ -5,11 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Extensions.DependencyInjection;
-using Rocket.Surgery.Extensions.FluentValidation.MediatR;
+using Rocket.Surgery.Operational.MediatR;
 
 [assembly: Convention(typeof(MediatorROperationsConvention))]
 
-namespace Rocket.Surgery.Extensions.FluentValidation.MediatR
+namespace Rocket.Surgery.Operational.MediatR
 {
     /// <summary>
     /// ValidationConvention.

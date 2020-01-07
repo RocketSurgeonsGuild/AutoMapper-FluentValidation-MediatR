@@ -9,6 +9,6 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="../Operational.MediatR/Rocket.Surgery.Operational.MediatR.csproj" />
-        <ProjectReference Include="../FluentValidation.AspNetCore/Rocket.Surgery.AspNetCore.FluentValidation.csproj" />
+        <PackageReference Include="Rocket.Surgery.AspNetCore.FluentValidation" />
     </ItemGroup>
 </Project>

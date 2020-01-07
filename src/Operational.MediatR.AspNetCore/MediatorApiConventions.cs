@@ -4,13 +4,14 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Rocket.Surgery.AspNetCore.FluentValidation;
 
 #pragma warning disable CA1801
 #pragma warning disable RCS1163
 // Unused parameter.
 // ReSharper disable UnusedParameter.Global
 
-namespace Rocket.Surgery.AspNetCore.FluentValidation.MediatR
+namespace Rocket.Surgery.Operational.AspNetCore.MediatR
 {
     [PublicAPI]
     public static class MediatorApiConventions

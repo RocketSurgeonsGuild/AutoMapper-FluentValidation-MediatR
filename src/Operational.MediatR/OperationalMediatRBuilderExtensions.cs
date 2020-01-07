@@ -1,6 +1,6 @@
 using System;
 using JetBrains.Annotations;
-using Rocket.Surgery.Extensions.FluentValidation.MediatR;
+using Rocket.Surgery.Operational.MediatR;
 
 // ReSharper disable once CheckNamespace
 namespace Rocket.Surgery.Conventions
@@ -9,7 +9,7 @@ namespace Rocket.Surgery.Conventions
     /// FluentValidationHostBuilderExtensions.
     /// </summary>
     [PublicAPI]
-    public static class FluentValidationHostBuilderExtensions
+    public static class OperationalMediatRBuilderExtensions
     {
         /// <summary>
         /// Adds fluent validation.
@@ -25,7 +25,7 @@ namespace Rocket.Surgery.Conventions
 
             builder.UseAutoMapper();
             builder.UseMediatR();
-            builder.UseFluentValidation();
+            builder.WithFluentValidation();
             builder.Scanner.PrependConvention<MediatorROperationsConvention>();
             return builder;
         }
