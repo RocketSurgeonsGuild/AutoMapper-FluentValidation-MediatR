@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\AspNetCore\Rocket.Surgery.AspNetCore.FluentValidation.csproj" />
+        <ProjectReference Include="..\..\src\FluentValidation\Rocket.Surgery.Extensions.FluentValidation.csproj" />
+        <PackageReference Include="NodaTime.Serialization.JsonNet" />
+        <PackageReference Include="NodaTime.Testing" />
+        <PackageReference Include="Rocket.Surgery.Extensions" />
+        <PackageReference Include="Rocket.Surgery.Extensions.CommandLine" />
+        <PackageReference Include="Rocket.Surgery.Extensions.DependencyInjection" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+</Project>

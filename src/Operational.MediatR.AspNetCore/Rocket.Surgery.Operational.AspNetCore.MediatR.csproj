@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+        <AssemblyTitle>Rocket.Surgery Fluent Validation for ASP.NET Core for MediatR</AssemblyTitle>
+    </PropertyGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Rocket.Surgery.Extensions.Abstractions" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Operational.MediatR/Rocket.Surgery.Operational.MediatR.csproj" />
+        <ProjectReference Include="../FluentValidation.AspNetCore/Rocket.Surgery.AspNetCore.FluentValidation.csproj" />
+    </ItemGroup>
+</Project>
