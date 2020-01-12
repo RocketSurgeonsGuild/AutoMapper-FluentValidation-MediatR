@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
@@ -8,16 +9,23 @@ namespace Rocket.Surgery.Operational.MediatR
     internal class FluentValidationMediatRPipelineBehavior<T, R> : IPipelineBehavior<T, R>
     {
         private readonly IValidatorFactory _validatorFactory;
+        private readonly IServiceProvider _serviceProvider;
 
-        public FluentValidationMediatRPipelineBehavior(IValidatorFactory validatorFactory)
-            => _validatorFactory = validatorFactory;
+        public FluentValidationMediatRPipelineBehavior(IValidatorFactory validatorFactory, IServiceProvider serviceProvider)
+        {
+            _validatorFactory = validatorFactory;
+            _serviceProvider = serviceProvider;
+        }
 
         public async Task<R> Handle(T request, CancellationToken cancellationToken, RequestHandlerDelegate<R> next)
         {
             var validator = _validatorFactory.GetValidator(typeof(T));
             if (validator != null)
             {
-                var response = await validator.ValidateAsync(request, cancellationToken).ConfigureAwait(false);
+                var context = new ValidationContext<T>(request);
+                context.SetServiceProvider(_serviceProvider);
+
+                var response = await validator.ValidateAsync(context, cancellationToken).ConfigureAwait(false);
                 if (!response.IsValid)
                 {
                     throw new ValidationException(response.Errors);

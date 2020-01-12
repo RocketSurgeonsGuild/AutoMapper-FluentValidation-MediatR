@@ -16,7 +16,7 @@ namespace Rocket.Surgery.Conventions
         /// </summary>
         /// <param name="builder">The builder.</param>
         /// <returns>IConventionHostBuilder.</returns>
-        public static IConventionHostBuilder UseOperationalMediatR(this IConventionHostBuilder builder)
+        public static IConventionHostBuilder UseMediatROperations(this IConventionHostBuilder builder)
         {
             if (builder is null)
             {
@@ -25,7 +25,7 @@ namespace Rocket.Surgery.Conventions
 
             builder.UseAutoMapper();
             builder.UseMediatR();
-            builder.WithFluentValidation();
+            builder.UseFluentValidation();
             builder.Scanner.PrependConvention<MediatorROperationsConvention>();
             return builder;
         }

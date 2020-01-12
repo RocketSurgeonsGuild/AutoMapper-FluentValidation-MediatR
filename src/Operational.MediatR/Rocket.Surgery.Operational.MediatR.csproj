@@ -7,5 +7,7 @@
         <PackageReference Include="Rocket.Surgery.Extensions.AutoMapper" />
         <PackageReference Include="Rocket.Surgery.Extensions.MediatR" />
         <PackageReference Include="Rocket.Surgery.Extensions.FluentValidation" />
+        <PackageReference Include="NodaTime" />
+        <PackageReference Include="NodaTime.Serialization.SystemTextJson" />
     </ItemGroup>
 </Project>
