@@ -1,4 +1,5 @@
 using System;
+using System.Xml;
 using JetBrains.Annotations;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
