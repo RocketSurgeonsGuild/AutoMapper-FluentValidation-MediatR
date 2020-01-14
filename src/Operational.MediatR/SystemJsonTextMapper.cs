@@ -18,4 +18,15 @@ namespace Rocket.Surgery.Operational.MediatR
             CreateMap<string?, JsonElement?>().ConvertUsing(converter);
         }
     }
+
+    public static class JsonMapperOptions
+    {
+        public static JsonDefaultValue DefaultValue { get; set; } = JsonDefaultValue.NotNull;
+    }
+
+    public enum JsonDefaultValue
+    {
+        Default,
+        NotNull
+    }
 }

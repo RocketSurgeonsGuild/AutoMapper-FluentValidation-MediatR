@@ -2,9 +2,13 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using AutoMapper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NewtonsoftJsonSerializer = Newtonsoft.Json.JsonSerializer;
+using JsonSerializer = System.Text.Json.JsonSerializer;
+using JsonException = System.Text.Json.JsonException;
 
 namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
 {
@@ -14,18 +18,49 @@ namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
         ITypeConverter<byte[]?, JToken?>,
         ITypeConverter<JToken?, string?>,
         ITypeConverter<string?, JToken?>,
-        ITypeConverter<JToken?, JToken?>,
+        ITypeConverter<JsonElement?, JToken?>,
+        ITypeConverter<JToken?, JsonElement?>,
+        ITypeConverter<JsonElement, JToken?>,
+        ITypeConverter<JToken?, JsonElement>,
         ITypeConverter<JArray?, byte[]?>,
         ITypeConverter<byte[]?, JArray?>,
         ITypeConverter<JArray?, string?>,
         ITypeConverter<string?, JArray?>,
-        ITypeConverter<JArray?, JArray?>,
+        ITypeConverter<JsonElement?, JArray?>,
+        ITypeConverter<JArray?, JsonElement?>,
+        ITypeConverter<JsonElement, JArray?>,
+        ITypeConverter<JArray?, JsonElement>,
         ITypeConverter<JObject?, byte[]?>,
         ITypeConverter<byte[]?, JObject?>,
         ITypeConverter<JObject?, string?>,
         ITypeConverter<string?, JObject?>,
-        ITypeConverter<JObject?, JObject?>
+        ITypeConverter<JsonElement?, JObject?>,
+        ITypeConverter<JObject?, JsonElement?>,
+        ITypeConverter<JsonElement, JObject?>,
+        ITypeConverter<JObject?, JsonElement>
     {
+        private static readonly JsonElement _empty = JsonSerializer.Deserialize<JsonElement>("{}");
+        private static JsonElement GetDefaultSjt(JsonElement value) => JsonMapperOptions.DefaultValue switch
+        {
+            JsonDefaultValue.NotNull => value.ValueKind == JsonValueKind.Undefined ? _empty : value,
+            _ => value
+        };
+        private static JsonElement GetDefaultSjt(JsonElement? value) => JsonMapperOptions.DefaultValue switch
+        {
+            JsonDefaultValue.NotNull => !value.HasValue || value.Value.ValueKind == JsonValueKind.Undefined ? _empty : value.Value,
+            _ => value ?? default
+        };
+        private static JToken? GetDefaultToken(JToken? value) => JsonMapperOptions.DefaultValue switch
+        {
+            JsonDefaultValue.NotNull => value ?? new JObject(),
+            _ => value ?? default
+        };
+        private static T? GetDefault<T>(T? value) where T : JToken, new() => JsonMapperOptions.DefaultValue switch
+        {
+            JsonDefaultValue.NotNull => value ?? new T(),
+            _ => value
+        };
+
         public byte[]? Convert(JToken? source, byte[]? destination, ResolutionContext context)
         {
             if (source == null || source.Type == JTokenType.None)
@@ -44,7 +79,7 @@ namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
             }
             catch (JsonReaderException)
             {
-                return destination;
+                return GetDefaultToken(destination);
             }
         }
 
@@ -61,7 +96,7 @@ namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
             }
             catch (JsonReaderException)
             {
-                return destination;
+                return GetDefaultToken(destination);
             }
         }
 
@@ -82,7 +117,7 @@ namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
             }
             catch (JsonReaderException)
             {
-                return destination ?? new JArray();
+                return GetDefault(destination);
             }
         }
 
@@ -97,7 +132,7 @@ namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
             }
             catch (JsonReaderException)
             {
-                return destination ?? new JArray();
+                return GetDefault(destination);
             }
         }
 
@@ -118,7 +153,7 @@ namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
             }
             catch (JsonReaderException)
             {
-                return destination ?? new JObject();
+                return GetDefault(destination);
             }
         }
 
@@ -133,26 +168,216 @@ namespace Rocket.Surgery.Operational.MediatR.NewtonsoftJson
             }
             catch (JsonReaderException)
             {
-                return destination ?? new JObject();
+                return GetDefault(destination);
             }
         }
 
-        public JToken? Convert(JToken? source, JToken? destination, ResolutionContext context) => source ?? destination;
+        public JsonElement Convert(JObject? source, JsonElement destination, ResolutionContext context)
+        {
+            if (source is null)
+            {
+                return GetDefaultSjt(destination);
+            }
+            using var data = WriteToStream(source);
+            try
+            {
+                using var document = JsonDocument.Parse(data);
+                return document.RootElement;
+            }
+            catch (JsonException)
+            {
+                return GetDefaultSjt(destination);
+            }
+        }
 
-        public JArray? Convert(JArray? source, JArray? destination, ResolutionContext context) => source ?? destination;
+        public JObject? Convert(JsonElement source, JObject? destination, ResolutionContext context)
+        {
+            if (source.ValueKind == JsonValueKind.Undefined) return GetDefault(destination);
+            try
+            {
+                return JObject.Parse(JsonSerializer.Serialize(source));
+            }
+            catch (JsonReaderException)
+            {
+                return GetDefault(destination);
+            }
+        }
 
-        public JObject? Convert(JObject? source, JObject? destination, ResolutionContext context)
-            => source ?? destination;
+        public JsonElement? Convert(JObject? source, JsonElement? destination, ResolutionContext context)
+        {
+            if (source is null)
+            {
+                return GetDefaultSjt(destination);
+            }
+            using var data = WriteToStream(source);
+            try
+            {
+                using var document = JsonDocument.Parse(data);
+                return document.RootElement;
+            }
+            catch (JsonException)
+            {
+                return GetDefaultSjt(destination);
+            }
+        }
+
+        public JObject? Convert(JsonElement? source, JObject? destination, ResolutionContext context)
+        {
+            if (!source.HasValue || source.Value.ValueKind == JsonValueKind.Undefined) GetDefault(destination);
+            try
+            {
+                return JObject.Parse(JsonSerializer.Serialize(source));
+            }
+            catch (JsonReaderException)
+            {
+                return GetDefault(destination);
+            }
+        }
+
+        public JsonElement Convert(JArray? source, JsonElement destination, ResolutionContext context)
+        {
+            if (source is null)
+            {
+                return GetDefaultSjt(destination);
+            }
+            using var data = WriteToStream(source);
+            try
+            {
+                using var document = JsonDocument.Parse(data);
+                return document.RootElement;
+            }
+            catch (JsonException)
+            {
+                return GetDefaultSjt(destination);
+            }
+        }
+
+        public JArray? Convert(JsonElement source, JArray? destination, ResolutionContext context)
+        {
+            if (source.ValueKind == JsonValueKind.Undefined) GetDefault(destination);
+            try
+            {
+                return JArray.Parse(JsonSerializer.Serialize(source));
+            }
+            catch (JsonReaderException)
+            {
+                return GetDefault(destination);
+            }
+        }
+
+        public JsonElement? Convert(JArray? source, JsonElement? destination, ResolutionContext context)
+        {
+            if (source is null)
+            {
+                return GetDefaultSjt(destination);
+            }
+            using var data = WriteToStream(source);
+            try
+            {
+                using var document = JsonDocument.Parse(data);
+                return document.RootElement;
+            }
+            catch (JsonException)
+            {
+                return GetDefaultSjt(destination);
+            }
+        }
+
+        public JArray? Convert(JsonElement? source, JArray? destination, ResolutionContext context)
+        {
+            if (!source.HasValue || source.Value.ValueKind == JsonValueKind.Undefined) GetDefault(destination);
+            try
+            {
+                return JArray.Parse(JsonSerializer.Serialize(source));
+            }
+            catch (JsonReaderException)
+            {
+                return GetDefault(destination);
+            }
+        }
+
+        public JsonElement Convert(JToken? source, JsonElement destination, ResolutionContext context)
+        {
+            if (source is null)
+            {
+                return GetDefaultSjt(destination);
+            }
+            using var data = WriteToStream(source);
+            try
+            {
+                using var document = JsonDocument.Parse(data);
+                return document.RootElement;
+            }
+            catch (JsonException)
+            {
+                return GetDefaultSjt(destination);
+            }
+        }
+
+        public JToken? Convert(JsonElement source, JToken? destination, ResolutionContext context)
+        {
+            if (source.ValueKind == JsonValueKind.Undefined) return GetDefaultToken(destination);
+            try
+            {
+                return JToken.Parse(JsonSerializer.Serialize(source));
+            }
+            catch (JsonReaderException)
+            {
+                return GetDefaultToken(destination);
+            }
+        }
+
+        public JsonElement? Convert(JToken? source, JsonElement? destination, ResolutionContext context)
+        {
+            if (source is null)
+            {
+                return GetDefaultSjt(destination);
+            }
+            using var data = WriteToStream(source);
+            try
+            {
+                using var document = JsonDocument.Parse(data);
+                return document.RootElement;
+            }
+            catch (JsonException)
+            {
+                return GetDefaultSjt(destination);
+            }
+        }
+
+        public JToken? Convert(JsonElement? source, JToken? destination, ResolutionContext context)
+        {
+            if (!source.HasValue || source.Value.ValueKind == JsonValueKind.Undefined) return GetDefaultToken(destination);
+            try
+            {
+                return JToken.Parse(JsonSerializer.Serialize(source));
+            }
+            catch (JsonReaderException)
+            {
+                return GetDefaultToken(destination);
+            }
+        }
 
         private byte[] WriteToBytes(JToken source)
         {
-            var memory = new MemoryStream();
+            using var memory = new MemoryStream();
             using var sw = new StreamWriter(memory);
-            var jw = new JsonTextWriter(sw) { Formatting = Formatting.None };
+            using var jw = new JsonTextWriter(sw) { Formatting = Formatting.None };
             source.WriteTo(jw);
             jw.Flush();
             memory.Position = 0;
             return memory.ToArray();
+        }
+
+        private Stream WriteToStream(JToken source)
+        {
+            var memory = new MemoryStream();
+            using var sw = new StreamWriter(memory);
+            using var jw = new JsonTextWriter(sw) { Formatting = Formatting.None };
+            source.WriteTo(jw);
+            jw.Flush();
+            memory.Position = 0;
+            return memory;
         }
     }
 }
