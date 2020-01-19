@@ -37,7 +37,7 @@
     
     
     
-    <PackageReference Update="Rocket.Surgery.Extensions.FluentValidation" Version="6.3.1-beta.51" />
+    <PackageReference Update="Rocket.Surgery.Extensions.FluentValidation" Version="6.3.1" />
     <PackageReference Update="Rocket.Surgery.Extensions.MediatR" Version="7.1.1" />
     
     
