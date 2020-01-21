@@ -23,9 +23,6 @@ namespace Rocket.Surgery.Conventions
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.UseAutoMapper();
-            builder.UseMediatR();
-            builder.UseFluentValidation();
             builder.Scanner.PrependConvention<MediatorROperationsConvention>();
             return builder;
         }

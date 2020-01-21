@@ -5,7 +5,10 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rocket.Surgery.Conventions;
+using Rocket.Surgery.Extensions.AutoMapper;
 using Rocket.Surgery.Extensions.DependencyInjection;
+using Rocket.Surgery.Extensions.FluentValidation;
+using Rocket.Surgery.Extensions.MediatR;
 using Rocket.Surgery.Operational.MediatR;
 
 [assembly: Convention(typeof(MediatorROperationsConvention))]
@@ -19,6 +22,9 @@ namespace Rocket.Surgery.Operational.MediatR
     /// <seealso cref="Rocket.Surgery.Extensions.DependencyInjection.IServiceConvention" />
     /// <seealso cref="IServiceConvention" />
     [PublicAPI]
+    [DependsOnConvention(typeof(AutoMapperConvention))]
+    [DependsOnConvention(typeof(MediatRConvention))]
+    [DependsOnConvention(typeof(FluentValidationConvention))]
     public class MediatorROperationsConvention : IServiceConvention
     {
         /// <summary>
