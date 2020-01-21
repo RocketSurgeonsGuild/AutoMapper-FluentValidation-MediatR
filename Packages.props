@@ -21,7 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Rocket.Surgery.AspNetCore.FluentValidation" Version="6.3.1" />
-    <PackageReference Update="Rocket.Surgery.Extensions.Abstractions" Version="2.2.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Abstractions" Version="2.2.1" />
     <PackageReference Update="Rocket.Surgery.Extensions.AutoMapper" Version="7.1.2" />
     <PackageReference Update="Rocket.Surgery.Extensions.FluentValidation" Version="6.3.1" />
     <PackageReference Update="Rocket.Surgery.Extensions.MediatR" Version="7.1.1" />
