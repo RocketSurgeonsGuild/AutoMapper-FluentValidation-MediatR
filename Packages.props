@@ -22,8 +22,8 @@
   <ItemGroup>
     <PackageReference Update="Rocket.Surgery.AspNetCore.FluentValidation" Version="7.0.0-beta.1" />
     <PackageReference Update="Rocket.Surgery.Extensions.Abstractions" Version="2.5.0" />
-    <PackageReference Update="Rocket.Surgery.Extensions.AutoMapper" Version="7.1.4" />
-    <PackageReference Update="Rocket.Surgery.Extensions.FluentValidation" Version="7.0.0-beta.1" />
-    <PackageReference Update="Rocket.Surgery.Extensions.MediatR" Version="7.1.1" />
+    <PackageReference Update="Rocket.Surgery.Conventions.AutoMapper" Version="8.0.0-beta.1" />
+    <PackageReference Update="Rocket.Surgery.Conventions.FluentValidation" Version="7.0.0-beta.1" />
+    <PackageReference Update="Rocket.Surgery.Conventions.MediatR" Version="8.0.0-beta.1" />
   </ItemGroup>
 </Project>
