@@ -3,7 +3,6 @@
         <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Conventions.MediatR\Rocket.Surgery.Conventions.MediatR.csproj" />
         <PackageReference Include="Rocket.Surgery.Conventions" />
     </ItemGroup>
 </Project>
