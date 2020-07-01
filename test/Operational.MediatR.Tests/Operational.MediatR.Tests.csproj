@@ -3,6 +3,5 @@
         <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Rocket.Surgery.Conventions" />
     </ItemGroup>
 </Project>
