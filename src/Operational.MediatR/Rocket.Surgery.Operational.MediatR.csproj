@@ -4,8 +4,8 @@
         <AssemblyTitle>Rocket.Surgery FluentValidation with MediatR for .NET Core</AssemblyTitle>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Rocket.Surgery.Extensions.AutoMapper" />
-        <PackageReference Include="Rocket.Surgery.Extensions.MediatR" />
-        <PackageReference Include="Rocket.Surgery.Extensions.FluentValidation" />
+        <PackageReference Include="Rocket.Surgery.Conventions.AutoMapper" />
+        <PackageReference Include="Rocket.Surgery.Conventions.MediatR" />
+        <PackageReference Include="Rocket.Surgery.Conventions.FluentValidation" />
     </ItemGroup>
 </Project>
