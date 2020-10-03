@@ -8,10 +8,10 @@
 <!-- badges -->
 
 <!-- history badges -->
-| Azure Pipelines | AppVeyor |
-| --------------- | -------- |
-| [![azurepipelines-badge]][azurepipelines] | [![appveyor-badge]][appveyor] |
-| [![azurepipelines-history-badge]][azurepipelines-history] | [![appveyor-history-badge]][appveyor-history] |
+| Azure Pipelines | GitHub Actions | AppVeyor |
+| --------------- | -------------- | -------- |
+| [![azurepipelines-badge]][azurepipelines] | [![github-badge]][github] | [![appveyor-badge]][appveyor] |
+| [![azurepipelines-history-badge]][azurepipelines-history] | [![github-history-badge]][github] | [![appveyor-history-badge]][appveyor-history] |
 <!-- history badges -->
 
 <!-- nuget packages -->
@@ -35,6 +35,9 @@ TBD
 [azurepipelines-badge]: https://img.shields.io/azure-devops/build/rocketsurgeonsguild/Libraries/16.svg?color=98C6FF&label=azure%20pipelines&logo=azuredevops&logoColor=98C6FF&style=flat "Azure Pipelines Status"
 [azurepipelines-history]: https://rocketsurgeonsguild.visualstudio.com/Libraries/_build?definitionId=16&branchName=master
 [azurepipelines-history-badge]: https://buildstats.info/azurepipelines/chart/rocketsurgeonsguild/Libraries/16?includeBuildsFromPullRequest=false "Azure Pipelines History"
+[github]: https://github.com/RocketSurgeonsGuild/AutoMapper.Extensions/actions?query=workflow%3Aci
+[github-badge]: https://img.shields.io/github/workflow/status/RocketSurgeonsGuild/AutoMapper.Extensions/ci.svg?label=github&logo=github&color=b845fc&logoColor=b845fc&style=flat "GitHub Actions Status"
+[github-history-badge]: https://buildstats.info/github/chart/RocketSurgeonsGuild/AutoMapper.Extensions?includeBuildsFromPullRequest=false "GitHub Actions History"
 [appveyor]: https://ci.appveyor.com/project/RocketSurgeonsGuild/automapper-extensions
 [appveyor-badge]: https://img.shields.io/appveyor/ci/RocketSurgeonsGuild/automapper-extensions.svg?color=00b3e0&label=appveyor&logo=appveyor&logoColor=00b3e0&style=flat "AppVeyor Status"
 [appveyor-history]: https://ci.appveyor.com/project/RocketSurgeonsGuild/automapper-extensions/history
