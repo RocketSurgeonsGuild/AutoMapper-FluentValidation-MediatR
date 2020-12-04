@@ -2,6 +2,7 @@ using System;
 using System.Xml;
 using JetBrains.Annotations;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rocket.Surgery.Conventions;
@@ -31,7 +32,9 @@ namespace Rocket.Surgery.Operational.MediatR
         /// Registers the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public void Register(IServiceConventionContext context)
+        /// <param name="configuration"></param>
+        /// <param name="services"></param>
+        public void Register(IConventionContext context, IConfiguration configuration, IServiceCollection services)
         {
             if (context is null)
             {
@@ -39,7 +42,7 @@ namespace Rocket.Surgery.Operational.MediatR
             }
 
             var serviceConfig = context.GetOrAdd(() => new MediatRServiceConfiguration());
-            context.Services.TryAddEnumerable(
+            services.TryAddEnumerable(
                 new ServiceDescriptor(
                     typeof(IPipelineBehavior<,>),
                     typeof(FluentValidationMediatRPipelineBehavior<,>),

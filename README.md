@@ -17,8 +17,8 @@
 <!-- nuget packages -->
 | Package | NuGet | MyGet |
 | ------- | ----- | ----- |
-| Rocket.Surgery.Operational.MediatR | [![nuget-version-5bcfhixkkmvw-badge]![nuget-downloads-5bcfhixkkmvw-badge]][nuget-5bcfhixkkmvw] | [![myget-version-5bcfhixkkmvw-badge]![myget-downloads-5bcfhixkkmvw-badge]][myget-5bcfhixkkmvw] |
 | Rocket.Surgery.Operational.AspNetCore.MediatR | [![nuget-version-hecbzlwwmduw-badge]![nuget-downloads-hecbzlwwmduw-badge]][nuget-hecbzlwwmduw] | [![myget-version-hecbzlwwmduw-badge]![myget-downloads-hecbzlwwmduw-badge]][myget-hecbzlwwmduw] |
+| Rocket.Surgery.Operational.MediatR | [![nuget-version-5bcfhixkkmvw-badge]![nuget-downloads-5bcfhixkkmvw-badge]][nuget-5bcfhixkkmvw] | [![myget-version-5bcfhixkkmvw-badge]![myget-downloads-5bcfhixkkmvw-badge]][myget-5bcfhixkkmvw] |
 <!-- nuget packages -->
 
 # Whats next?
@@ -31,9 +31,9 @@ TBD
 [github-license-badge]: https://img.shields.io/github/license/RocketSurgeonsGuild/AutoMapper.Extensions.svg?style=flat "License"
 [codecov]: https://codecov.io/gh/RocketSurgeonsGuild/AutoMapper.Extensions
 [codecov-badge]: https://img.shields.io/codecov/c/github/RocketSurgeonsGuild/AutoMapper.Extensions.svg?color=E03997&label=codecov&logo=codecov&logoColor=E03997&style=flat "Code Coverage"
-[azurepipelines]: https://rocketsurgeonsguild.visualstudio.com/Libraries/_build/latest?definitionId=16&branchName=master
+[azurepipelines]: https://dev.azure.com/rocketsurgeonsguild/Libraries/_build/latest?definitionId=16&branchName=master
 [azurepipelines-badge]: https://img.shields.io/azure-devops/build/rocketsurgeonsguild/Libraries/16.svg?color=98C6FF&label=azure%20pipelines&logo=azuredevops&logoColor=98C6FF&style=flat "Azure Pipelines Status"
-[azurepipelines-history]: https://rocketsurgeonsguild.visualstudio.com/Libraries/_build?definitionId=16&branchName=master
+[azurepipelines-history]: https://dev.azure.com/rocketsurgeonsguild/Libraries/_build?definitionId=16&branchName=master
 [azurepipelines-history-badge]: https://buildstats.info/azurepipelines/chart/rocketsurgeonsguild/Libraries/16?includeBuildsFromPullRequest=false "Azure Pipelines History"
 [github]: https://github.com/RocketSurgeonsGuild/AutoMapper.Extensions/actions?query=workflow%3Aci
 [github-badge]: https://img.shields.io/github/workflow/status/RocketSurgeonsGuild/AutoMapper.Extensions/ci.svg?label=github&logo=github&color=b845fc&logoColor=b845fc&style=flat "GitHub Actions Status"
@@ -42,18 +42,18 @@ TBD
 [appveyor-badge]: https://img.shields.io/appveyor/ci/RocketSurgeonsGuild/automapper-extensions.svg?color=00b3e0&label=appveyor&logo=appveyor&logoColor=00b3e0&style=flat "AppVeyor Status"
 [appveyor-history]: https://ci.appveyor.com/project/RocketSurgeonsGuild/automapper-extensions/history
 [appveyor-history-badge]: https://buildstats.info/appveyor/chart/RocketSurgeonsGuild/automapper-extensions?includeBuildsFromPullRequest=false "AppVeyor History"
-[nuget-5bcfhixkkmvw]: https://www.nuget.org/packages/Rocket.Surgery.Operational.MediatR/
-[nuget-version-5bcfhixkkmvw-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Operational.MediatR.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
-[nuget-downloads-5bcfhixkkmvw-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Operational.MediatR.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
-[myget-5bcfhixkkmvw]: https://www.myget.org/feed/rocket-surgeons-guild/package/nuget/Rocket.Surgery.Operational.MediatR
-[myget-version-5bcfhixkkmvw-badge]: https://img.shields.io/myget/rocket-surgeons-guild/vpre/Rocket.Surgery.Operational.MediatR.svg?label=myget&color=004880&logo=nuget&style=flat-square "MyGet Pre-Release Version"
-[myget-downloads-5bcfhixkkmvw-badge]: https://img.shields.io/myget/rocket-surgeons-guild/dt/Rocket.Surgery.Operational.MediatR.svg?color=004880&logo=nuget&style=flat-square "MyGet Downloads"
 [nuget-hecbzlwwmduw]: https://www.nuget.org/packages/Rocket.Surgery.Operational.AspNetCore.MediatR/
 [nuget-version-hecbzlwwmduw-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Operational.AspNetCore.MediatR.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
 [nuget-downloads-hecbzlwwmduw-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Operational.AspNetCore.MediatR.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
 [myget-hecbzlwwmduw]: https://www.myget.org/feed/rocket-surgeons-guild/package/nuget/Rocket.Surgery.Operational.AspNetCore.MediatR
 [myget-version-hecbzlwwmduw-badge]: https://img.shields.io/myget/rocket-surgeons-guild/vpre/Rocket.Surgery.Operational.AspNetCore.MediatR.svg?label=myget&color=004880&logo=nuget&style=flat-square "MyGet Pre-Release Version"
 [myget-downloads-hecbzlwwmduw-badge]: https://img.shields.io/myget/rocket-surgeons-guild/dt/Rocket.Surgery.Operational.AspNetCore.MediatR.svg?color=004880&logo=nuget&style=flat-square "MyGet Downloads"
+[nuget-5bcfhixkkmvw]: https://www.nuget.org/packages/Rocket.Surgery.Operational.MediatR/
+[nuget-version-5bcfhixkkmvw-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Operational.MediatR.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
+[nuget-downloads-5bcfhixkkmvw-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Operational.MediatR.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
+[myget-5bcfhixkkmvw]: https://www.myget.org/feed/rocket-surgeons-guild/package/nuget/Rocket.Surgery.Operational.MediatR
+[myget-version-5bcfhixkkmvw-badge]: https://img.shields.io/myget/rocket-surgeons-guild/vpre/Rocket.Surgery.Operational.MediatR.svg?label=myget&color=004880&logo=nuget&style=flat-square "MyGet Pre-Release Version"
+[myget-downloads-5bcfhixkkmvw-badge]: https://img.shields.io/myget/rocket-surgeons-guild/dt/Rocket.Surgery.Operational.MediatR.svg?color=004880&logo=nuget&style=flat-square "MyGet Downloads"
 <!-- generated references -->
 
 <!-- nuke-data
